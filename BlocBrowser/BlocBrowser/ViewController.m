@@ -39,7 +39,7 @@
     self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textField.placeholder = NSLocalizedString(@"Website URL", @"Placeholder text for web browser URL field");
+    self.textField.placeholder = NSLocalizedString(@"Google Search or Type URL", @"Placeholder text for web browser URL field");
     self.textField.backgroundColor = [UIColor colorWithWhite:220/255.0f alpha:1];
     self.textField.delegate = self;
 
@@ -115,6 +115,11 @@
     NSString *URLString = textField.text;
     
     NSURL *URL = [NSURL URLWithString:URLString];
+    
+    if ([URLString componentsSeparatedByString:@" "].count > 1){
+        NSString *newURLString = [URLString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/search?q=%@", newURLString]];
+    }
     
     if (!URL.scheme) {
         // The user didn't type http: or https:
