@@ -77,7 +77,7 @@
         // adjust labelX and labelY for each label
         if (currentLabelIndex < 2) {
             // 0 or 1, so on top
-            labelY = 0;
+            labelY = 100;
         } else {
             // 2 or 3, so on bottom
             labelY = CGRectGetHeight(self.bounds) / 2;
