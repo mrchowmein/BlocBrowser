@@ -210,4 +210,15 @@
     }
 }
 
+- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale {
+    
+    CGAffineTransform currentTransform = CGAffineTransformIdentity;
+    toolbar.transform  = CGAffineTransformScale(currentTransform, scale, scale);
+    
+    
+}
+
+-(void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToLongPressWithColors:(UIColor *)color {
+}
+
 @end
